@@ -60,7 +60,7 @@ class _LocalNotificationsState extends State<LocalNotifications> {
     NotificationDetails notificationDetails =
     NotificationDetails(androidNotificationDetails, iosNotificationDetails);
     await flutterLocalNotificationsPlugin.show(
-        0, 'Hello there', 'please subscribe my channel', notificationDetails);
+        0, 'Selamat!', 'Anda mendapatkan hadiah uang tunai sebesar Rp 2.000.000.000.000', notificationDetails);
   }
 
   Future<void> notificationAfterSec() async {
@@ -76,8 +76,8 @@ class _LocalNotificationsState extends State<LocalNotifications> {
 
     NotificationDetails notificationDetails =
     NotificationDetails(androidNotificationDetails, iosNotificationDetails);
-    await flutterLocalNotificationsPlugin.schedule(1, 'Hello there',
-        'please subscribe my channel', timeDelayed, notificationDetails);
+    await flutterLocalNotificationsPlugin.schedule(1, 'Selamat!',
+        'Anda mendapatkan hadiah uang tunai sebesar Rp 2.000.000.000.000', timeDelayed, notificationDetails);
   }
 
   Future onSelectNotification(String payLoad) {
