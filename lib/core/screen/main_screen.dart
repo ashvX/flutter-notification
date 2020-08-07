@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:phone_block/core/widgets/custom_button.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class LocalNotifications extends StatefulWidget {
 
 class _LocalNotificationsState extends State<LocalNotifications> {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
   AndroidInitializationSettings androidInitializationSettings;
   IOSInitializationSettings iosInitializationSettings;
   InitializationSettings initializationSettings;
@@ -49,35 +50,42 @@ class _LocalNotificationsState extends State<LocalNotifications> {
 
   Future<void> notification() async {
     AndroidNotificationDetails androidNotificationDetails =
-    AndroidNotificationDetails(
-        'Channel ID', 'Channel title', 'channel body',
-        priority: Priority.High,
-        importance: Importance.Max,
-        ticker: 'test');
+        AndroidNotificationDetails(
+            'Channel ID', 'Channel title', 'channel body',
+            priority: Priority.High,
+            importance: Importance.Max,
+            ticker: 'test');
 
     IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
 
     NotificationDetails notificationDetails =
-    NotificationDetails(androidNotificationDetails, iosNotificationDetails);
+        NotificationDetails(androidNotificationDetails, iosNotificationDetails);
     await flutterLocalNotificationsPlugin.show(
-        0, 'Selamat!', 'Anda mendapatkan hadiah uang tunai sebesar Rp 2.000.000.000.000', notificationDetails);
+        0,
+        'Selamat!',
+        'Anda mendapatkan hadiah uang tunai sebesar Rp 2.000.000.000.000',
+        notificationDetails);
   }
 
   Future<void> notificationAfterSec() async {
     var timeDelayed = DateTime.now().add(Duration(seconds: 5));
     AndroidNotificationDetails androidNotificationDetails =
-    AndroidNotificationDetails(
-        'second channel ID', 'second Channel title', 'second channel body',
-        priority: Priority.High,
-        importance: Importance.Max,
-        ticker: 'test');
+        AndroidNotificationDetails(
+            'second channel ID', 'second Channel title', 'second channel body',
+            priority: Priority.High,
+            importance: Importance.Max,
+            ticker: 'test');
 
     IOSNotificationDetails iosNotificationDetails = IOSNotificationDetails();
 
     NotificationDetails notificationDetails =
-    NotificationDetails(androidNotificationDetails, iosNotificationDetails);
-    await flutterLocalNotificationsPlugin.schedule(1, 'Selamat!',
-        'Anda mendapatkan hadiah uang tunai sebesar Rp 2.000.000.000.000', timeDelayed, notificationDetails);
+        NotificationDetails(androidNotificationDetails, iosNotificationDetails);
+    await flutterLocalNotificationsPlugin.schedule(
+        1,
+        'Selamat!',
+        'Anda mendapatkan hadiah uang tunai sebesar Rp 2.000.000.000.000',
+        timeDelayed,
+        notificationDetails);
   }
 
   Future onSelectNotification(String payLoad) {
@@ -133,6 +141,10 @@ class _LocalNotificationsState extends State<LocalNotifications> {
                   style: TextStyle(fontSize: 20.0, color: Colors.white),
                 ),
               ),
+            ),
+            CustomButton(
+              onPressed: _showNotifications,
+              title: 'Show Notification',
             ),
           ],
         ),
