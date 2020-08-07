@@ -1,6 +1,6 @@
 # phone_block
 
-Block incoming phone calls
+Block incoming phone calls and show notification
 
 ## Getting Started
 
